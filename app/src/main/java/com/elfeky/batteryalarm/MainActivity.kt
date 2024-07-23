@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 fun BatteryStatusScreen(
     modifier: Modifier = Modifier
 ) {
-    val batteryLowImageState = remember { mutableStateOf(R.drawable.battery_full) }
+    val batteryLowImageState = remember { mutableIntStateOf(R.drawable.battery_full) }
     val context = LocalContext.current
 
     Box(
@@ -52,9 +52,8 @@ fun BatteryStatusScreen(
         }
 
         Image(
-            painter = painterResource(id = batteryLowImageState.value),
-            contentDescription = "Battery Status",
-            modifier = Modifier
+            painter = painterResource(id = batteryLowImageState.intValue),
+            contentDescription = "Battery Status"
         )
     }
 }
